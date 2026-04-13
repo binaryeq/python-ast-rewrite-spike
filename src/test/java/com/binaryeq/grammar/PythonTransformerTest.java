@@ -21,9 +21,10 @@ class PythonTransformerTest {
 
     /**
      * The shebang line (#!/usr/bin/env python3) is removed by the XPath
-     * expression //shebang. The newline that terminates the shebang line is
-     * part of the following file_input production, not the shebang rule, so it
-     * remains in the output as a leading blank line.
+     * expression //shebang. The newline that follows is a sibling of the
+     * shebang node in file_input; because the output is compacted, that
+     * newline is suppressed and the file begins directly with the next
+     * statement.
      */
     @Test
     void removeShebang() throws Exception {
@@ -44,7 +45,8 @@ class PythonTransformerTest {
     /**
      * An import_stmt node (e.g. "import os") is removed. The NEWLINE that
      * closes the enclosing simple_stmts production is outside the import_stmt
-     * span, so it remains as a leading blank line in the output.
+     * span; because the output is compacted, that newline is suppressed and
+     * the file begins directly with the next statement.
      */
     @Test
     void removeImportStatement() throws Exception {
@@ -143,10 +145,10 @@ class PythonTransformerTest {
 
     /**
      * All # comments (standalone lines, inline trailing comments, consecutive
-     * comment blocks) are removed by the //comment XPath expression. Each
-     * COMMENT token is deleted in isolation: the surrounding newlines and any
-     * leading indentation spaces remain, so lines that held only a comment
-     * collapse to a (possibly indented) blank line.
+     * comment blocks) are removed by the //comment XPath expression. Because
+     * the output is compacted, lines that held only a comment produce no blank
+     * line, and inline comments are stripped without leaving trailing
+     * whitespace. All blank lines in the original source are also removed.
      */
     @Test
     void removeAllComments() throws Exception {

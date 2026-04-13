@@ -1,20 +1,8 @@
 #!/usr/bin/env python3
-
-
-
-import os  
+import os
 import sys
-
-
-
-
-
 def add(a, b):
-    
-    result = a + b  
+    result = a + b
     return result
-
-
-
-x = add(1, 2)  
-print(x)  
+x = add(1, 2)
+print(x)

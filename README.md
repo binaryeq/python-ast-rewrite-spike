@@ -7,22 +7,39 @@ Parses Python source files using ANTLR4 (Python3 grammar from grammars-v4), remo
 - Java 17
 - Maven 3.6+
 
-## Build
+## Build and Test
+
+Using Maven as follows: 
 
 ```
 mvn package
 ```
 
-## Run tests
+## Usage
 
+### API
+
+```java
+String PythonTransformer.transform(Path inputPath, String xpathExpr, String replacement)
 ```
-mvn test
-```
 
----
+Read a python file from `inputPath`, parses it into an AST, locates the nodes described by the `xpathExpr` query, 
+and creates python sources by replacing the text corresponding to those nodes by `replacement` text.
+If `replacement` is empty, then the text will just be removed.
+
+There is also an API function to apply multiple transformations (multiple query+replacement pairs).
+
+### Examples
+
+- `transform(input, "//shebang", "")` -- removes the shebang line defining the python interpreter. 
+- `transform(input, "//comment", "")`-- removes all comments
 
 
-### XPath expression examples
+### Limitations
+
+`antlr` does not support full xpath syntax. 
+In particular, it does not support queries with node conditions, such as `//comment[contains(@text, 'TODO')]`.
+
 
 | Expression | What is removed or replaced      |
 |------------|----------------------------------|

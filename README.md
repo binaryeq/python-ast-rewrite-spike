@@ -1,6 +1,6 @@
 # python-grammar-spike
 
-Parses Python source files using ANTLR4 (Python3 grammar from grammars-v4), removes all AST nodes matching an ANTLR4 XPath expression or replacing them with some custom text, and writes the result to an output file.
+Parses Python source files using [ANTLR4](https://github.com/antlr/antlr4) ([Python3 grammar from grammars-v4](https://github.com/antlr/grammars-v4/blob/master/python/python3/Python3Parser.g4)), removes all AST nodes matching an ANTLR4 XPath expression or replacing them with some custom text, and writes the result to an output file.
 
 ## Build and Test
 

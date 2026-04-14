@@ -30,7 +30,8 @@ There is also an API function to apply multiple transformations (multiple query+
 
 ### Examples
 
-- `transform(input, "//shebang", "")` -- removes the shebang line defining the python interpreter. 
+- `transform(input, "//shebang", "")` -- removes the shebang line defining the python interpreter 
+- `transform(input, "//shebang", "python3")` -- normalises the shebang line
 - `transform(input, "//comment", "")`-- removes all comments
 
 

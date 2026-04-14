@@ -41,7 +41,7 @@ In particular, it does not support queries with node conditions, such as `//comm
 
 ### Related Work
 
-- [pmd](https://pmd.github.io/) also uses xpath to query ASTs (Java, JS) and define antipatterns corresponding to bugs. The advantage of using antlr is that it has a grammar library supporting most mainstream languages
+- [pmd](https://pmd.github.io/) also uses [xpath to query ASTs (Java, JS)](https://docs.pmd-code.org/latest/pmd_userdocs_extending_writing_xpath_rules.html) and define antipatterns corresponding to bugs. The advantage of using antlr is that it has a grammar library supporting most mainstream languages
 - [treesitter](https://tree-sitter.github.io/tree-sitter/using-parsers/queries/index.html) has a [LISP-like query language](https://tree-sitter.github.io/tree-sitter/using-parsers/queries/index.html)
 - [semgrep](https://semgrep.dev/docs/writing-rules/overview) has a custom rule syntax to query syntax trees
-- 
+

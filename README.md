@@ -2,18 +2,17 @@
 
 Parses Python source files using ANTLR4 (Python3 grammar from grammars-v4), removes all AST nodes matching an ANTLR4 XPath expression or replacing them with some custom text, and writes the result to an output file.
 
-## Requirements
-
-- Java 17
-- Maven 3.6+
-
 ## Build and Test
 
-Using Maven as follows: 
+Requirements:
 
-```
-mvn package
-```
+- Java 17+
+- Maven 3.6+
+
+## Build
+
+- build: `mvn package`
+- test: `mvn test`
 
 ## Usage
 
@@ -39,13 +38,3 @@ There is also an API function to apply multiple transformations (multiple query+
 
 `antlr` does not support full xpath syntax. 
 In particular, it does not support queries with node conditions, such as `//comment[contains(@text, 'TODO')]`.
-
-
-| Expression | What is removed or replaced      |
-|------------|----------------------------------|
-| `//shebang` | The `#!/...` interpreter directive on line 1 |
-| `//funcdef` | All function definitions         |
-| `//classdef` | All class definitions           |
-| `//import_stmt` | All import statements        |
-| `//comment` | All comments                     |
-
